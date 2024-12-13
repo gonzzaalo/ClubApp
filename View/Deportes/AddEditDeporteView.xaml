@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodels="clr-namespace:ClubApp.ViewModels.Deportes"
+             x:Class="ClubApp.View.Deportes.AddEditDeporteView"
+             Title="Agregar/Editar Deporte">
+
+    <ContentPage.BindingContext>
+        <viewmodels:AddEditDeporteViewModel/>
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20" Spacing="30" BackgroundColor="LightGreen">
+        <Label
+            Text="Agregar/Editar Deporte"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            TextColor="Black" />
+
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="*,*">
+            <!-- Nombre Field -->
+            <Label 
+                Grid.Row="0" Grid.Column="0" 
+                Text="Nombre:" 
+                FontSize="Medium" 
+                FontAttributes="Bold" 
+                TextColor="Black" />
+            <Entry 
+                Grid.Row="0" Grid.Column="1" 
+                Text="{Binding Deporte.Nombre}" 
+                Placeholder="Ingrese el nombre del deporte"
+                BackgroundColor="Black" 
+                TextColor="White" 
+                HeightRequest="50" />
+
+            <!-- Descripción Field -->
+            <Label 
+                Grid.Row="1" Grid.Column="0" 
+                Text="Descripción:" 
+                FontSize="Medium" 
+                FontAttributes="Bold" 
+                TextColor="Black" />
+            <Entry 
+                Grid.Row="1" Grid.Column="1" 
+                Text="{Binding Deporte.Descripcion}" 
+                Placeholder="Ingrese la descripción"
+                BackgroundColor="Black" 
+                TextColor="White" 
+                HeightRequest="50" />
+
+            <!-- Hora Field -->
+            <Label 
+                Grid.Row="2" Grid.Column="0" 
+                Text="Hora:" 
+                FontSize="Medium" 
+                FontAttributes="Bold" 
+                TextColor="Black" />
+            <!--<Entry 
+                Grid.Row="2" Grid.Column="1" 
+                Text="{Binding Deporte.Hora}" 
+                Placeholder="Ingrese la hora"
+                BackgroundColor="Black" 
+                TextColor="White" 
+                HeightRequest="50" />-->
+            <Entry 
+    Grid.Row="2" Grid.Column="1" 
+    Text="{Binding HoraString}" 
+    Placeholder="Ingrese la hora (hh:mm)"
+    BackgroundColor="Black" 
+    TextColor="White" 
+    HeightRequest="50" />
+
+
+            <!-- Profesor Field -->
+
+            <Picker 
+    SelectedItem="{Binding Profesor}" 
+    Grid.Row="3" Grid.Column="1" 
+    ItemsSource="{Binding Profesores}" 
+    ItemDisplayBinding="{Binding NombreCompleto}" 
+    BackgroundColor="Beige" />
+
+
+            <!--<Label 
+                Grid.Row="3" Grid.Column="0" 
+                Text="Profesor" 
+                FontSize="Medium" 
+                FontAttributes="Bold" 
+                TextColor="Black" />
+            <Entry 
+                Grid.Row="3" Grid.Column="1" 
+                Text="{Binding Deporte.Profesor}" 
+                Placeholder="Ingrese el profesor"
+                BackgroundColor="Black" 
+                TextColor="White" 
+                HeightRequest="50" />-->
+        </Grid>
+
+        <HorizontalStackLayout Spacing="30" HorizontalOptions="Center">
+            <Button 
+                Text="Guardar"
+                Command="{Binding GuardarCommand}"
+                BackgroundColor="Green"
+                TextColor="White"
+                WidthRequest="150"
+                HeightRequest="50"
+                CornerRadius="25"
+                Padding="10" 
+                BorderColor="Black"
+BorderWidth="2"
+    FontAttributes="Bold"/>
+            <Button 
+                Text="Cancelar"
+                Command="{Binding CancelarCommand}"
+                BackgroundColor="Red"
+                TextColor="White"
+                WidthRequest="150"
+                HeightRequest="50"
+                CornerRadius="25"
+                Padding="10" 
+                BorderColor="Black"
+BorderWidth="2"
+    FontAttributes="Bold"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

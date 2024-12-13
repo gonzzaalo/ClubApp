@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ClubApp.ViewModels.Deportistas"
+             x:Class="ClubApp.View.Deportistas.DeportistaView"
+             Title="Deportistas" BackgroundColor="LightGreen">
+
+    <ContentPage.BindingContext>
+        <viewmodels:DeportistasViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="20">
+            <Label 
+                Text="Lista de Deportistas."
+                FontSize="24"
+                FontAttributes="Bold"
+                VerticalOptions="Center" 
+                HorizontalOptions="Start" 
+                TextColor="Black"/>
+
+            <!-- Activity Indicator -->
+            <ActivityIndicator IsRunning="{Binding ActivityStart}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+            <!-- Activity Indicator -->
+
+            <CollectionView x:Name="deportistasCollectionView"
+                            ItemsSource="{Binding Deportistas}"
+                            SelectedItem="{Binding DeportistaCurrent, Mode=TwoWay}"
+                            SelectionMode="Single"
+                            VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" Margin="0,0,0,20">
+                            <!-- Separación entre los elementos -->
+                            <BoxView Color="LightGray" CornerRadius="10" />
+
+                            <VerticalStackLayout Spacing="10">
+                                <!-- Nombre -->
+                                <HorizontalStackLayout Spacing="15">
+                                    <Label Text="Nombre:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Nombre}" FontSize="Medium" TextColor="Black" />
+                                </HorizontalStackLayout>
+
+                                <!-- Apellido -->
+                                <HorizontalStackLayout Spacing="15">
+                                    <Label Text="Apellido:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Apellido}" FontSize="Medium" TextColor="Black" />
+                                </HorizontalStackLayout>
+
+                                <!-- Email -->
+                                <HorizontalStackLayout Spacing="15">
+                                    <Label Text="Email:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Email}" FontSize="Medium" TextColor="Black" />
+                                </HorizontalStackLayout>
+
+                                <!-- Direccion -->
+                                <HorizontalStackLayout Spacing="15">
+                                    <Label Text="Dirección:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Direccion}" FontSize="Medium" TextColor="Black" />
+                                </HorizontalStackLayout>
+
+                                <!-- Teléfono -->
+                                <HorizontalStackLayout Spacing="15">
+                                    <Label Text="Teléfono:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Telefono}" FontSize="Medium" TextColor="Black" />
+                                </HorizontalStackLayout>
+
+                                <!-- Deporte -->
+                                <HorizontalStackLayout Spacing="15">
+                                    <Label Text="Deporte:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Deporte.Nombre}" FontSize="Medium" TextColor="Black" />
+                                </HorizontalStackLayout>
+
+                                <!-- Cuota -->
+                                <HorizontalStackLayout Spacing="15">
+                                    <Label Text="Cuota:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Cuota.Nombre}" FontSize="Medium" TextColor="Black" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Botones -->
+            <VerticalStackLayout Spacing="20" HorizontalOptions="Center">
+                <Button 
+    Text="Nuevo Deportista"
+    WidthRequest="150"
+    Command="{Binding AgregarCommand}" 
+    BackgroundColor="Green"
+    TextColor="White"
+    CornerRadius="25"
+    Padding="10"
+    BorderColor="Black"
+     BorderWidth="2"
+    FontAttributes="Bold" />
+
+                <Button Text="Editar" 
+                        WidthRequest="150"
+                        Command="{Binding EditarCommand}" 
+                        BackgroundColor="Blue"
+                        TextColor="White"
+                        CornerRadius="25"
+                        Padding="10"
+                        BorderColor="Black"
+                        BorderWidth="2"
+                        FontAttributes="Bold"/>
+                <Button Text="Eliminar"
+                        WidthRequest="150"
+                        Command="{Binding EliminarCommand}" 
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        CornerRadius="25"
+                        Padding="10"
+                        BorderColor="Black"
+                        BorderWidth="2"
+                        FontAttributes="Bold"/>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

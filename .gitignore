@@ -1,0 +1,62 @@
+# Ignore Visual Studio files
+.vs/
+.vscode/
+.idea/
+
+# Ignore ASP.NET temporary files
+obj/
+bin/
+
+# Ignore Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Ignore user-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Ignore build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]Release/
+[Dd]ReleasePublic/
+
+# Ignore Windows Installer files
+*.cab
+*.msi
+*.msp
+
+# Ignore JetBrains Rider/IntelliJ IDEA files
+.idea/
+
+# Ignore Node.js modules
+node_modules/
+
+# Ignore npm log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore macOS files
+.DS_Store
+
+# Ignore Windows files
+Thumbs.db
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore temporary files
+*.swp
+*.swo
+
+# Ignore JetBrains Rider folders
+.idea/
+
+# Ignore package lock
+package-lock.json

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ClubApp.ViewModels.Cuotas"    
+             x:Class="ClubApp.View.Cuotas.CuotaView"
+             Title="CuotaView" BackgroundColor="LightGreen">
+    <ContentPage.BindingContext>
+        <viewmodels:CuotasViewModels/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="20">
+            <Label 
+        Text="Lista de Deportistas."
+        FontSize="24"
+        FontAttributes="Bold"
+        VerticalOptions="Center" 
+        HorizontalOptions="Start" 
+        TextColor="Black"/>
+
+            <!-- Activity Indicator -->
+            <ActivityIndicator IsRunning="{Binding ActivityStart}"
+                       HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+            <!-- Activity Indicator -->
+            <CollectionView x:Name="cuotasCollectionView"
+                    ItemsSource="{Binding Cuotas}"
+                    SelectedItem="{Binding CuotaCurrent, Mode=TwoWay}"
+                    SelectionMode="Single"
+                    VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" Margin="5">
+
+                            <BoxView Color="LightGray" CornerRadius="10" />
+
+                            <VerticalStackLayout Spacing="10">
+                                <HorizontalStackLayout Spacing="45">
+                                    <Label Text="Nombre:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Nombre}" FontSize="Medium"  TextColor="Black" />
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout Spacing="15">
+                                        <Label Text="Descripción:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Descripcion}" FontSize="Medium"  TextColor="Black" />
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout Spacing="60">
+                                    <Label Text="Monto:" FontSize="Small" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Monto, StringFormat='$ {0:#0}'}" FontSize="Medium" TextColor="Black" />
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <VerticalStackLayout Spacing="20" HorizontalOptions="Center">
+                <Button Text="Nuevo Deportista" 
+                    WidthRequest="150"
+                    Command="{Binding AgregarCommand}" 
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    CornerRadius="25"
+                    Padding="10"
+                        BorderColor="Black"
+ BorderWidth="2"
+FontAttributes="Bold"/>
+                <Button Text="Editar" 
+                    WidthRequest="150"
+                    Command="{Binding EditarCommand}" 
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    CornerRadius="25"
+                    Padding="10"
+                        BorderColor="Black"
+                        BorderWidth="2"
+                        FontAttributes="Bold"/>
+                <Button Text="Eliminar"
+                    WidthRequest="150"
+                    Command="{Binding EliminarCommand}" 
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    CornerRadius="25"
+                    Padding="10"
+                        BorderColor="Black"
+                        BorderWidth="2"
+                        FontAttributes="Bold"/>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

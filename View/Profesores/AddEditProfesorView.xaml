@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ClubApp.ViewModels.Profesores"
+             x:Class="ClubApp.View.Profesores.AddEditProfesorView"
+             Title="Agregar/Editar Profesor">
+
+    <ContentPage.BindingContext>
+        <viewmodels:AddEditProfesorViewModel/>
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20" Spacing="30" BackgroundColor="LightGreen">
+        <Label
+     Text="Agregar/Editar Profesor"
+     FontSize="24"
+     FontAttributes="Bold"
+     HorizontalOptions="Center"
+     TextColor="Black" />
+
+        <!-- Nombre Field -->
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*,*">
+            <Label 
+         Grid.Row="0" Grid.Column="0" 
+         Text="Nombre:" 
+         FontSize="Medium" 
+         FontAttributes="Bold" 
+         TextColor="Black" />
+            <Entry 
+         Grid.Row="0" Grid.Column="1" 
+         Text="{Binding Profesor.Nombre}" 
+         Placeholder="Ingrese el nombre del profesor"
+         BackgroundColor="Black" 
+         TextColor="White" 
+         HeightRequest="50" />
+
+            <!-- Apellido Field -->
+            <Label 
+         Grid.Row="1" Grid.Column="0" 
+         Text="Apellido:" 
+         FontSize="Medium" 
+         FontAttributes="Bold" 
+         TextColor="Black" />
+            <Entry 
+         Grid.Row="1" Grid.Column="1" 
+         Text="{Binding Profesor.Apellido}" 
+         Placeholder="Ingrese el apellido del profesor"
+         BackgroundColor="Black" 
+         TextColor="White" 
+         HeightRequest="50" />
+
+            <!-- Telefono Field -->
+            <Label 
+         Grid.Row="2" Grid.Column="0" 
+         Text="Teléfono:" 
+         FontSize="Medium" 
+         FontAttributes="Bold" 
+         TextColor="Black" />
+            <Entry 
+         Grid.Row="2" Grid.Column="1" 
+         Text="{Binding Profesor.Telefono}" 
+         Placeholder="Ingrese el teléfono del profesor"
+         BackgroundColor="Black" 
+         TextColor="White" 
+         HeightRequest="50" />
+
+            
+        </Grid>
+
+        <!-- Action Buttons -->
+        <HorizontalStackLayout Spacing="30" HorizontalOptions="Center">
+            <Button 
+         Text="Guardar"
+         Command="{Binding GuardarCommand}"
+         BackgroundColor="Green"
+         TextColor="White"
+         WidthRequest="150"
+         HeightRequest="50"
+         CornerRadius="25"
+         Padding="10" 
+                BorderColor="Black"
+                BorderWidth="2"
+                FontAttributes="Bold"/>
+            <Button 
+         Text="Cancelar"
+         Command="{Binding CancelarCommand}"
+         BackgroundColor="Red"
+         TextColor="White"
+         WidthRequest="150"
+         HeightRequest="50"
+         CornerRadius="25"
+         Padding="10"
+                BorderColor="Black"
+                BorderWidth="2"
+                FontAttributes="Bold"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
